@@ -1,6 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
+
+import {Routes, Route, useNavigate} from 'react-router-dom';
+import Confirmation from "../../pages/Confirmation";
+
+
+
+
 export default function ReservationForm(props) {
+  
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,7 +34,27 @@ export default function ReservationForm(props) {
     setFinalTime(props.availableTimes.map((times) => <option>{times}</option>));
   }
 
+  
+  const validate = () => {
+    console.log("this is working")
+    console.log(fName.length & lName.length & email.length & comments.length);
+    
+    return (
+      fName.length & lName.length & email.length);
+
+    
+  };
+
+  const navigate = useNavigate();
+
+  const navigateToContacts = () => {
+    // 👇️ navigate to /contacts
+    navigate('/confirmation');
+  };
+
+
   return (
+    <>
     <form className="reservation-form">
       <div>
         <label htmlFor="fName">First Name</label> <br></br>
@@ -86,6 +114,7 @@ export default function ReservationForm(props) {
           onChange={(e) => setTel(e.target.value)}
         ></input>
       </div>
+      
 
       <div>
         <label htmlFor="people">Number of People</label> <br></br>
@@ -168,14 +197,27 @@ export default function ReservationForm(props) {
         <br></br>
         <small>
           <p>
-            Note: You cannot edit your reservation after submission. Please
+            Note: please unsure that you you provide all the information and You cannot edit your reservation after submission. Please
             double-check your answer before submitting your reservation request.
           </p>
         </small>
-        <Link className="action-button , link-button" to="/confirmation">
-          Book Table
-        </Link>
+
+        <div>
+     
+        
+         <button className=" link-button" onClick={navigateToContacts}  disabled={!validate()}>Confirmation</button>
+
+        <Routes>
+           <Route path="/confirmation" element={<Confirmation />} />
+        </Routes>
+        </div>
       </div>
     </form>
+
+  
+   
+   
+
+   </>
   );
 }

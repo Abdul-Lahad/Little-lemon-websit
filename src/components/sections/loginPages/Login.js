@@ -1,6 +1,8 @@
 import HeroImage from "../../../assets/food/food4.webp";
+
 export default function Login() {
   return (
+    <>
     <header className="reserve-table">
       <img
         className="header-reserve"
@@ -11,5 +13,7 @@ export default function Login() {
         <h1>Login</h1>
       </div>
     </header>
+  
+    </>
   );
 }

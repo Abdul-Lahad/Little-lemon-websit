@@ -64,6 +64,7 @@ Link:link {
   
 }
 
+
 .action-button:hover {
   background-color: #495e57;
   color: #eeeeee;
@@ -446,6 +447,12 @@ footer > menu {
   box-shadow: 5px 2px 5px rgb(53, 52, 52);
 }
 .link-button {
+ 
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: "Karla";
+  font-size: 2rem;
+  box-shadow: 5px 2px 5px rgb(53, 52, 52);
    background:#919694;
    }
 
